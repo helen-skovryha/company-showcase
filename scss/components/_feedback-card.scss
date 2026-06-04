@@ -1,0 +1,58 @@
+.feedback-card {
+  background-color: hsl(var(--c-bg-clr, --clr-violet-100) / var(--bgd-opacity));
+  color: hsl(var(--c-feedback-text-clr, --color-primary-dark));
+  padding: 2rem;
+  border-radius: 0.5rem;
+
+  font-size: var(--fs-2xl);
+  box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-blue-200) / 0.8);
+  &:nth-child(3) {
+    @media screen and (min-width: $bp-tablet) {
+      grid-column: span 4;
+      grid-row-start: 3;
+    }
+    @media screen and (min-width: $bp-desktop) {
+      grid-column: unset;
+      grid-row: span 2;
+    }
+  }
+  &__head {
+    display: flex;
+    gap: 1rem;
+  }
+  &__image {
+    width: 1.875rem;
+    min-width: 1.75rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+  }
+  &__name {
+    margin-bottom: 6px;
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-500);
+  }
+  &__format {
+    font-size: var(--fs-xl);
+    opacity: 0.5;
+  }
+  & > p {
+    line-height: 1.5;
+  }
+  & > p:first-of-type {
+    margin-bottom: 20px;
+    font-size: var(--fs-xl);
+  }
+  & > *:where(:not(:last-child)) {
+    //has lower specificity than: > *:not(:last-child) This makes it easier to override later.
+    margin-bottom: 16px;
+  }
+  & > p:not(:first-of-type) {
+    font-family: var(--ff-card);
+  }
+  & > p:nth-last-of-type(2):not(:nth-of-type(2)) {
+    opacity: 0.8;
+  }
+  & > p:last-of-type:not(:nth-of-type(2)) {
+    opacity: 0.6;
+  }
+}

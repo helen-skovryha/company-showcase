@@ -1,0 +1,61 @@
+.feedback-section {
+  &__container {
+    display: grid;
+    gap: 2rem;
+    padding-block: 2rem;
+    margin-inline: auto;
+    @media screen and (min-width: $bp-tablet) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media screen and (min-width: $bp-desktop) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+}
+.feedback-grid-col-span-2 {
+  @media screen and (min-width: $bp-tablet) {
+    grid-column: span 2;
+  }
+}
+
+// .feedback-section__container {
+//   grid-auto-columns: 1fr;
+
+//   grid-template-areas:
+//     "one"
+//     "two"
+//     "three"
+//     "four"
+//     "five"
+//     "six";
+//   grid-auto-columns: 1fr;
+//   @media screen and (min-width: $bp-tablet) {
+//     grid-template-areas:
+//       "one one two two"
+//       "four five five six"
+//       "three three three three";
+//   }
+//   @media screen and (min-width: $bp-desktop) {
+//     grid-template-areas:
+//       "one one two two three"
+//       "four five five six three";
+//   }
+// }
+// .feedback__card:nth-child(1) {
+//   grid-area: one;
+// }
+// .feedback__card:nth-child(2) {
+//   grid-area: two;
+// }
+// .feedback__card:nth-child(3) {
+//   grid-area: three;
+// }
+// .feedback__card:nth-child(4) {
+//   grid-area: four;
+// }
+// .feedback__card:nth-child(5) {
+//   grid-area: five;
+// }
+// .feedback__card:nth-child(6) {
+//   grid-area: six;
+// }

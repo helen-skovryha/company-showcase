@@ -1,0 +1,91 @@
+.link {
+  padding: 0.4lh 1ch;
+  font-family: "Libre Franklin", sans-serif;
+  color: hsl(var(--c-clr-link, --color-primary-white));
+  fill: hsl(var(--c-clr-link-fill, --color-primary-white));
+  text-decoration: none;
+  cursor: pointer;
+
+  &--logo {
+    padding: 0;
+  }
+  &--dropdown-button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    padding: 0.8lh 1ch;
+    font-weight: var(--fw-700);
+    line-height: inherit;
+    text-align: center;
+    border: none;
+    --c-clr-link: var(--color-primary-white);
+    --c-clr-link-fill: var(--color-primary-white);
+    background-color: transparent;
+    appearance: none;
+    transition: color 0.4s ease-in-out;
+    &.dropdown-btn-scrolled {
+      --c-clr-link: var(--color-primary-dark);
+      --c-clr-link-fill: var(--color-primary-dark);
+    }
+  }
+  &--product-card {
+    font-weight: var(--fw-700);
+    --c-clr-link: var(--clr-orange-400);
+  }
+  &--modal-product {
+    font-weight: var(--fw-700);
+    border-radius: 6px;
+    --c-clr-link: var(--color-primary-light);
+    filter: var(--glow-drop-shadow);
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    &:is(:hover, :focus) {
+      box-shadow: 0 6px 15px hsl(var(--color-primary-dark) / 0.35),
+        0 0 12px hsl(var(--clr-orange-100) / 0.55);
+      background-color: hsl(var(--clr-orange-200) / 0.2);
+    }
+  }
+  &--checkbox-policy-link {
+    padding: 0;
+    font-weight: var(--fw-600);
+    --c-clr-link: var(--color-primary-light);
+    transition: color 0.1s ease-in-out, filter 0.1s ease-in-out;
+    &:is(:hover, :focus) {
+      --c-clr-link: var(--color-primary-light-hover);
+      filter: var(--glow-drop-shadow);
+    }
+  }
+  &--footer {
+    padding: 0;
+    --c-clr-link: var(--clr-yellow-400);
+    transition: filter 0.2s ease-in-out;
+    &:hover {
+      filter: var(--glow-drop-shadow);
+    }
+  }
+  &--mobile-menu {
+    --c-clr-link: var(--color-primary-white);
+    font-weight: var(--fw-700);
+  }
+  &--cube-card-link {
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    z-index: 2;
+
+    font-size: var(--fs-xs);
+    color: hsl(var(--color-secondary-white) / 0.8);
+    filter: var(--glow-drop-shadow);
+    @media screen and (min-width: $bp-tablet) {
+      font-size: var(--fs-md);
+    }
+    @media screen and (min-width: $bp-laptop) {
+      font-size: var(--fs-lg);
+    }
+  }
+  &--modal-cube-side {
+    padding: 0 20px;
+    --c-clr-link: var(--color-primary-white);
+    filter: var(--glow-drop-shadow);
+  }
+}

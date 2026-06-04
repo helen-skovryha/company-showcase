@@ -1,0 +1,184 @@
+.background-gradients {
+  background: radial-gradient(
+      circle at 20% 20%,
+      hsl(var(--c-radial-gradient-clr, 0 0% 0%) / 0.4),
+      transparent 50%
+    ),
+    linear-gradient(135deg, transparent 90%, rgba(0, 0, 0, 0.15)),
+    hsl(var(--c-bg-clr));
+}
+
+.text-white {
+  --c-feedback-text-clr: var(--color-secondary-white);
+}
+.text-blue-dark {
+  --c-feedback-text-clr: var(--color-text-changer);
+}
+
+.bg-violet-saturated {
+  --c-bg-clr: var(--clr-violet-200);
+}
+.bg-blue-dark {
+  --c-bg-clr: var(--clr-blue-200);
+}
+.bg-yellow-light {
+  --c-bg-clr: var(--clr-yellow-300);
+}
+
+.bg-violet-dark {
+  --c-bg-clr: var(--clr-violet-300);
+  --c-radial-gradient-clr: var(--clr-violet-200);
+}
+.bg-blue {
+  --c-bg-clr: var(--clr-blue-100);
+  --c-radial-gradient-clr: var(--color-primary-white);
+}
+.bg-orange-dark {
+  --c-bg-clr: var(--clr-orange-500);
+  --c-radial-gradient-clr: var(--clr-yellow-400);
+}
+.bg-yellow-sand {
+  --c-bg-clr: var(--clr-yellow-100);
+  --c-radial-gradient-clr: var(--clr-orange-500);
+}
+.bg-blue-light {
+  --c-bg-clr: var(--clr-blue-50);
+  --c-radial-gradient-clr: var(--clr-yellow-300);
+}
+
+.bg-yellow-saturated {
+  --c-bg-clr: var(--clr-yellow-400);
+  --c-radial-gradient-clr: var(--clr-yellow-400);
+}
+
+.options-section {
+  &__title {
+    text-align: center;
+  }
+  &__container {
+    --c-options-row-height: 4rem;
+    --c-options-padding: 0.6rem;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: var(--c-options-row-height);
+    gap: 0.5rem;
+
+    width: min(95%, 90rem);
+    margin-inline: auto;
+    padding: var(--c-options-padding) 0;
+    font-family: var(--ff-card);
+
+    @media screen and (min-width: $bp-tablet) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @media screen and (min-width: $bp-desktop) {
+      grid-template-columns: repeat(8, 1fr);
+    }
+
+    @media screen and (min-width: $bp-desktop) {
+      --c-options-row-height: 6rem;
+    }
+  }
+  &__element {
+    background-color: hsl(
+      var(--c-bg-clr, --clr-violet-100) / var(--bgd-opacity)
+    );
+
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+    font-size: var(--fs-xs);
+    color: hsl(var(--color-primary-white));
+
+    box-shadow: 0.4rem 0.8rem 2rem -0.1rem hsl(var(--clr-blue-200) / 0.9);
+    transition: box-shadow 0.2s ease-in-out;
+
+    @media screen and (min-width: $bp-mobile-large) {
+      padding: 0.4rem;
+    }
+    @media screen and (min-width: $bp-desktop) {
+      padding: 0.6rem;
+      border-radius: 0.4rem;
+    }
+
+    &:hover {
+      box-shadow: 0.4rem 0.8rem 2rem -0.1rem hsl(var(--clr-orange-500) / 0.8);
+    }
+  }
+}
+
+.c1r2 {
+  grid-row-end: span 2;
+}
+.c2r1 {
+  grid-column-end: span 2;
+}
+.c2r2 {
+  grid-column-end: span 2;
+  grid-row-end: span 2;
+}
+.cn-r2-of-9-11-12 {
+  grid-column-end: span 2;
+  grid-row-end: span 2;
+  @media screen and (min-width: $bp-tablet) {
+    grid-column-end: span 3;
+  }
+  @media screen and (min-width: $bp-desktop) {
+    grid-column-end: span 4;
+  }
+}
+.c2-rn-of-8 {
+  grid-column-end: span 2;
+  grid-row-end: span 4;
+  @media screen and (min-width: $bp-tablet) {
+    grid-row-end: span 3;
+  }
+}
+.cn-r1-of-10-14 {
+  @media screen and (min-width: $bp-desktop) {
+    grid-column-end: span 2;
+  }
+}
+.gcolstart-of-7 {
+  grid-column-start: 2;
+}
+.growstart-of-7 {
+  grid-row-start: 2;
+}
+.gcolstart-of-8 {
+  @media screen and (min-width: $bp-tablet) {
+    grid-column-start: 5;
+  }
+  @media screen and (min-width: $bp-desktop) {
+    grid-column-start: 3;
+  }
+}
+.growstart-of-10 {
+  grid-row-start: 7;
+  @media screen and (min-width: $bp-tablet) {
+    grid-row-start: 5;
+  }
+  @media screen and (min-width: $bp-desktop) {
+    grid-row-start: 7;
+  }
+}
+.gcolstart-of-10 {
+  @media screen and (min-width: $bp-tablet) {
+    grid-column-start: 4;
+  }
+  @media screen and (min-width: $bp-desktop) {
+    grid-column-start: 5;
+  }
+}
+.growstart-of-13 {
+  @media screen and (min-width: $bp-desktop) {
+    grid-row-start: 5;
+  }
+}
+.growstart-of-14 {
+  grid-row-start: 7;
+  @media screen and (min-width: $bp-tablet) {
+    grid-row-start: auto;
+  }
+}

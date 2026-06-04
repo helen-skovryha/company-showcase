@@ -1,0 +1,121 @@
+:root {
+  //=================primitives======================
+
+  --ff-primary: "Advent Pro", sans-serif;
+  --ff-heading: "Libre Franklin", sans-serif;
+  --ff-card: "Barlow Semi Condensed", sans-serif;
+
+  --fs-xs: 0.75rem; //12px
+  --fs-sm: 0.875rem; //14px
+  --fs-md: 1rem; //16px
+  --fs-lg: 1.125rem; //18px
+  --fs-xl: 1.25rem; //20px
+  --fs-2xl: 1.375rem; //22px
+
+  --fw-200: 200;
+  --fw-300: 300;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+
+  --lh-100: 1;
+  --lh-200: 1.2;
+  --lh-300: 1.3;
+  --lh-400: 1.4;
+  --lh-500: 1.5;
+  --lh-600: 1.6;
+
+  --m-auto: 0 auto;
+
+  --clr-green-50: 91 100% 50%;
+  --clr-green-100: 88 75% 47%;
+  --clr-green-200: 96 100% 29%;
+
+  --clr-dark: 36 95% 8%;
+  --clr-red: 9 100% 50%;
+
+  --clr-white: 0 0% 100%;
+  --clr-white-yellow: 30 100% 96%;
+
+  --clr-orange-50: 20 100% 57%;
+  --clr-orange-100: 36 100% 54%;
+  --clr-orange-200: 40 100% 53%;
+  --clr-orange-300: 26 80% 50%;
+  --clr-orange-400: 22 76% 48%;
+  --clr-orange-500: 18 72% 46%;
+
+  --clr-yellow-100: 40 70% 60%;
+  --clr-yellow-200: 50 84% 54%;
+  --clr-yellow-300: 54 84% 51%;
+  --clr-yellow-400: 44 84% 50%;
+
+  --clr-blue-50: 215 70% 60%;
+  --clr-blue-100: 240 50% 38%;
+  --clr-blue-200: 217 19% 35%;
+  --clr-blue-300: 221 77% 22%;
+  --clr-blue-400: 212 79% 50%;
+
+  --clr-violet-100: 263 55% 52%;
+  --clr-violet-200: 256 55% 32%;
+  --clr-violet-300: 256 25% 32%;
+
+  --bgd-opacity: 0.85;
+  --gradient-stop: 30%;
+  --clr-darkening-gradient: 60 2% 9%;
+
+  --dashboard-bgd: var(--clr-orange-300);
+  --widget-text-color: var(--color-primary-white);
+  --widget-bgd: linear-gradient(
+    to top right,
+    hsl(var(--clr-red) / 0.25),
+    hsl(var(--clr-blue-100) / 0.25),
+    hsl(var(--clr-blue-400) / 0.25),
+    hsl(var(--clr-green-200) / 0.25)
+  );
+
+  //====================semantic======================
+
+  --color-primary-light: var(--clr-orange-100);
+  --color-primary-light-hover: var(--clr-orange-200);
+  --color-primary-white: var(--clr-white-yellow);
+  --color-secondary-white: var(--clr-white);
+  --color-primary-dark: var(--clr-dark);
+  --color-invalid: var(--clr-red);
+
+  --lh-main: var(--lh-500);
+  --color-text-changer: var(--clr-blue-200);
+  --clr-bgd-main: var(--clr-primary-white);
+  --color-text-main: var(--clr-primary-dark);
+
+  --glow-drop-shadow: drop-shadow(0px 0px 8px hsl(var(--clr-orange-50)));
+  --dark-drop-shadow: drop-shadow(5px 5px 16px hsl(var(--color-primary-dark)));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bgd-opacity: 0.5;
+    --gradient-stop: 0%;
+
+    --color-text-changer: var(--color-secondary-white);
+    --clr-bgd-main: var(--color-primary-dark);
+    --color-text-main: var(--color-primary-white);
+
+    --dashboard-bgd: var(--clr-blue-300);
+    --widget-text-color: var(--color-secondary-white);
+    --widget-bgd: linear-gradient(
+      to bottom right,
+      hsl(var(--clr-blue-200) / 0.3),
+      hsl(var(--clr-blue-400) / 0.3),
+      hsl(var(--clr-green-200) / 0.3)
+    );
+  }
+}
+
+$bp-mobile: 480px;
+$bp-mobile-large: 540px;
+$bp-tablet: 768px;
+$bp-large-tablet: 920px;
+$bp-laptop: 1080px;
+$bp-desktop: 1280px;
+$bp-large: 1440px;

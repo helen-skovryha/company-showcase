@@ -1,0 +1,163 @@
+.form {
+  --c-input-padding-y: 0.3lh;
+  --c-input-padding-x: 2ch;
+  --c-form-field-gap: 16px;
+  --c-form-icon-width: 32px;
+
+  max-width: 600px;
+  padding: 34px 0;
+  margin: var(--m-auto);
+  text-align: center;
+  color: hsl(var(--clr-yellow-400) / 0.85);
+
+  @media screen and (min-width: $bp-desktop) {
+    padding: 64px 0;
+  }
+  // &__title {
+  // }
+  &__text {
+    padding-bottom: 3ch;
+  }
+  &__icon {
+    @media screen and (min-width: $bp-tablet) {
+      width: var(--c-form-icon-width);
+      height: var(--c-form-icon-width);
+    }
+    stroke: hsl(var(--clr-orange-300));
+    filter: var(--glow-drop-shadow);
+  }
+
+  &__input {
+    width: 100%;
+    padding: var(--c-input-padding-y) var(--c-input-padding-x);
+    border: none;
+    border-radius: 10px;
+
+    font-weight: var(--fw-500);
+    color: hsl(var(--color-primary-light));
+
+    @media screen and (min-width: $bp-tablet) {
+      font-size: var(--fs-2xl);
+    }
+
+    will-change: transform;
+    transform: translateX(0);
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out, background-image 0.2s ease-in-out,
+      border 0.2s ease-in-out, font-weight 0.2s ease-in-out;
+
+    box-shadow: 0 2px 6px hsla(0, 0%, 0%, 0.05),
+      0 8px 24px hsla(240, 52%, 88%, 0.08);
+    background-color: transparent;
+
+    --c-form-input-clr-red-dark: 0 88% 10%;
+    --c-form-input-clr-red-gray: 0 71% 16%;
+    --c-form-input-clr-blue: 216 96% 30%;
+    --c-form-input-clr-orange-dark: 17 94% 20%;
+
+    background-image: radial-gradient(
+      circle at -20% 40%,
+      hsl(var(--c-form-input-clr-red-dark) / 0.28) 0%,
+      hsl(var(--c-form-input-clr-red-gray) / 0.28) 20%,
+      hsl(var(--c-form-input-clr-blue) / 0.15) 45%,
+      hsl(var(--c-form-input-clr-orange-dark) / 0.22) 100%
+    );
+
+    &--text-area {
+      padding-left: calc(
+        var(--c-input-padding-x) + var(--c-form-field-gap) +
+          var(--c-form-icon-width)
+      );
+    }
+
+    // the input itself may not repaint with :valid styles until the next interaction. This is a known inconsistency between: constraint validation state
+    // Phone is inserted from suggestions → sometimes treated like autofill
+    //Sometimes adding focus state stabilizes behavior:
+
+    &:invalid {
+      border: 1px solid hsl(29, 100%, 11%);
+    }
+    &:valid
+    // ,
+    // &:user-valid,
+    // &:focus:valid
+    {
+      border: none;
+      font-weight: var(--fw-700);
+      background-image: radial-gradient(
+        circle at -20% 40%,
+        hsl(var(--c-form-input-clr-red-dark) / 0.38) 0%,
+        hsl(var(--c-form-input-clr-red-gray) / 0.38) 20%,
+        hsl(var(--c-form-input-clr-blue) / 0.25) 45%,
+        hsl(var(--c-form-input-clr-orange-dark) / 0.32) 100%
+      );
+    }
+    &::placeholder {
+      font-weight: var(--fw-200);
+      color: hsl(var(--color-primary-light));
+    }
+    &:focus::placeholder {
+      font-weight: var(--fw-400);
+      color: hsl(var(--color-primary-light-hover));
+    }
+
+    &:focus {
+      border: 1px solid hsl(var(--color-primary-light));
+      transform: translateX(18px);
+
+      background-image: radial-gradient(
+        circle at -20% 40%,
+        hsl(var(--c-form-input-clr-red-dark) / 0.28) 0%,
+        hsl(var(--c-form-input-clr-red-gray) / 0.28) 20%,
+        hsl(var(--c-form-input-clr-blue) / 0.32) 45%,
+        hsl(var(--c-form-input-clr-orange-dark) / 0.22) 100%
+      );
+    }
+    &:focus-visible {
+      outline: 1px solid hsl(var(--color-primary-light));
+    }
+    &:-webkit-autofill,
+    &:-webkit-autofill:is(:hover, :focus, :active) {
+      -webkit-box-shadow: 0 0 0 1000px transparent inset;
+      -webkit-text-fill-color: hsl(var(--color-primary-light));
+      transition: background-color 5000s ease-in-out 0s;
+      box-shadow: 0 0 0px 1000px transparent inset;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:focus 
+    // ,  &:-webkit-autofill:active
+    {
+      transition: background-color 10s 600000s,
+        //  font-size 0s 600000s,
+        color 0s 600000s !important;
+      // font-size: 22px !important;
+    }
+  }
+
+  &__button {
+    margin: 0 auto 30px;
+    padding: 0.6lh 0.8lh;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  }
+  &:has(.form__input[required]:invalid) .form__button {
+    opacity: 0.5;
+    background-color: hsl(var(--color-invalid) / 0.404);
+  }
+
+  &__select {
+    font-size: var(--fs-md);
+    @media (min-width: $bp-tablet) {
+      font-size: var(--fs-2xl);
+    }
+  }
+  &__select-option {
+    font-size: var(--fs-md);
+    font-weight: 900;
+    background-color: hsl(var(--color-primary-light) / 0.5);
+    @media (min-width: $bp-tablet) {
+      font-size: var(--fs-xl);
+    }
+  }
+}

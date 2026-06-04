@@ -1,0 +1,18 @@
+.form-field {
+  display: flex;
+  align-items: center;
+  gap: var(--c-form-field-gap);
+
+  padding: 0.4lh 4ch;
+  margin-bottom: 16px;
+  fill: hsl(var(--color-primary-light));
+  transition: box-shadow 0.2s ease-in-out, filter 0.2s ease-in-out;
+
+  &:has(.form__input:valid:not(.form__input--text-area)),
+  &:has(.form__input--text-area:not(:placeholder-shown)) {
+    border-radius: 10px;
+    box-shadow: 0 2px 20px hsl(var(--color-primary-light) / 0.18),
+      0 8px 24px hsl(var(--clr-orange-300) / 0.18);
+    filter: var(--glow-drop-shadow);
+  }
+}

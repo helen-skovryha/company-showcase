@@ -1,0 +1,56 @@
+.modal-form-container {
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-width: 1200px;
+  height: 100%;
+  margin: var(--m-auto);
+}
+
+.modal-form {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  padding-bottom: 30px;
+  margin: var(--m-auto);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  @media screen and (min-width: $bp-mobile) {
+    border-radius: 32px;
+  }
+
+  &__sign-up {
+    .form-field__sign-in,
+    .form-field__book {
+      display: none;
+    }
+  }
+  &__sign-in {
+    .form-field__sign-up,
+    .form-field__book,
+    .modal-form__sign-in-button {
+      display: none;
+    }
+  }
+
+  &__book {
+    .form-field__sign-in,
+    .modal-form__book-button {
+      display: none;
+    }
+  }
+  &__switch-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+}
+.modal-form__sign-in:not(:has(.form-field__sign-in .form__input:invalid))
+  .form__button,
+.modal-form__sign-up:not(:has(.form-field__sign-up .form__input:invalid))
+  .form__button,
+.modal-form__book:not(:has(.form-field__book .form__input:invalid))
+  .form__button {
+  background-color: hsl(var(--clr-green-200) / 0.6);
+  opacity: 1;
+}

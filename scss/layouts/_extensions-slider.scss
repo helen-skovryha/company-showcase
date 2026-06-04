@@ -1,0 +1,52 @@
+.swiper.extensions-slider {
+  position: relative;
+  width: 120px;
+  height: 180px;
+  overflow: visible;
+  perspective: 1800px;
+
+  @media screen and (min-width: $bp-mobile) {
+    width: 180px;
+    height: 260px;
+  }
+  @media screen and (min-width: $bp-tablet) {
+    width: 240px;
+    height: 360px;
+  }
+
+  & .swiper-wrapper {
+    padding-bottom: 32px;
+  }
+}
+.swiper-slide.extension-slide {
+  font-family: var(--ff-card);
+  border-radius: 28px;
+  box-shadow: 0 8px 20px hsl(0 0% 0% / 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease,
+    background-color 0.3s ease;
+
+  &.far-behind-next {
+    background-color: hsl(var(--clr-blue-100));
+  }
+  &.far-behind-prev {
+    background-color: hsl(var(--clr-violet-200));
+  }
+  &.progress-is-0 {
+    background-color: hsl(var(--clr-blue-50));
+  }
+  &.progress-is-1 {
+    background-color: hsl(var(--clr-violet-200) / 0.85);
+  }
+  &.progress-is--1 {
+    background-color: hsl(var(--clr-blue-100) / 0.85);
+  }
+  &.swiper-slide-active {
+    box-shadow: 0 12px 40px hsl(0 0% 0% / 0.3);
+    &:hover {
+      box-shadow: 0 16px 40px hsl(0 0% 0% / 0.4);
+    }
+  }
+}
+.swiper.extensions-slider.swiper-creative .extension-slide.swiper-slide {
+  transition-property: transform, opacity, height, background-color, box-shadow;
+}

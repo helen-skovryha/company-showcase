@@ -1,0 +1,41 @@
+@property --glow-edge-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@mixin glow-edge {
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.5s ease;
+    animation: glow-edge-animation 4s linear infinite;
+
+    filter: blur(0.75em);
+    border: solid 0.95em;
+    border-image: conic-gradient(
+        from var(--glow-edge-angle),
+        #669900,
+        #99cc33,
+        #ccee66,
+        #006699,
+        #3399cc,
+        #990066,
+        #cc3399,
+        #ff6600,
+        #ff9900,
+        #ffcc00,
+        #669900
+      )
+      1;
+  }
+}
+@keyframes glow-edge-animation {
+  to {
+    --glow-edge-angle: 1turn;
+  }
+}

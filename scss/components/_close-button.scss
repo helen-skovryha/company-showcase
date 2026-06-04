@@ -1,0 +1,61 @@
+.close-button {
+  position: absolute;
+  top: var(--c-close-btn-offset-y, 0);
+  right: var(--c-close-btn-offset-x, 0);
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: auto;
+  padding: 0;
+  border: none;
+
+  fill: transparent;
+  stroke: hsl(var(--color-primary-white) / 0.7);
+  background-color: transparent;
+  filter: drop-shadow(0px 0px 0px transparent);
+  cursor: pointer;
+  @media (min-width: $bp-tablet) {
+    position: sticky;
+  }
+
+  &--modal-product {
+    --c-close-btn-offset-x: 16px;
+    --c-close-btn-offset-y: 16px;
+  }
+  &--form {
+    --c-close-btn-offset-x: 18px;
+    --c-close-btn-offset-y: 16px;
+    @media (min-width: $bp-desktop) {
+      --c-close-btn-offset-x: 24px;
+      --c-close-btn-offset-y: 24px;
+    }
+  }
+  &--mobile-menu,
+  &--modal-cube-side {
+    --c-close-btn-offset-x: 14px;
+    --c-close-btn-offset-y: 14px;
+    @media (min-width: $bp-tablet) {
+      --c-close-btn-offset-x: 20px;
+      --c-close-btn-offset-y: 20px;
+    }
+  }
+
+  &__close-icon {
+    transition: stroke 0.2s ease, filter 0.2s ease;
+    @media (min-width: $bp-tablet) {
+      width: 22px;
+      height: 22px;
+    }
+    @media (min-width: $bp-desktop) {
+      width: 28px;
+      height: 28px;
+    }
+    &:hover {
+      stroke: hsl(var(--color-primary-dark));
+      filter: drop-shadow(0px 0px 8px rgb(124, 103, 94));
+    }
+  }
+}

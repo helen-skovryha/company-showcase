@@ -1,0 +1,123 @@
+.cube-card {
+  width: 100%;
+  height: 100%;
+
+  padding: 0.5rem 0.2rem 0;
+  text-align: center;
+  @media screen and (min-width: $bp-tablet) {
+    font-size: var(--fs-md);
+  }
+  @media screen and (min-width: $bp-laptop) {
+    font-size: var(--fs-lg);
+  }
+
+  &__default-text {
+    line-height: var(--lh-200);
+  }
+  &__image {
+    width: 100%;
+    max-height: 5rem;
+    border: 1.25rem;
+    object-position: center top;
+
+    backface-visibility: hidden;
+    will-change: transform;
+
+    inset: 14% 0;
+    z-index: -3;
+
+    @media screen and (min-width: $bp-mobile) {
+      max-height: 6.25rem;
+    }
+    @media screen and (min-width: $bp-laptop) {
+      max-height: 9.375rem;
+    }
+    @media screen and (min-width: $bp-desktop) {
+      max-height: 10.625rem;
+    }
+
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+
+        black 90%,
+        transparent
+      ),
+      linear-gradient(
+        to bottom,
+        transparent,
+        black 10%,
+
+        black 90%,
+        transparent
+      );
+    -webkit-mask-composite: intersect;
+
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+
+        black 90%,
+        transparent
+      ),
+      linear-gradient(
+        to bottom,
+        transparent,
+        black 10%,
+
+        black 90%,
+        transparent
+      );
+
+    mask-composite: intersect;
+  }
+  &__title {
+    font-size: var(--fs-xs);
+    color: hsl(var(--color-secondary-white) / 0.8);
+
+    inset: 25%;
+    z-index: 2;
+    filter: var(--dark-drop-shadow);
+
+    @media screen and (min-width: $bp-mobile-large) {
+      font-size: var(--fs-md);
+    }
+    @media screen and (min-width: $bp-tablet) {
+      font-size: inherit;
+    }
+  }
+  &__open-more-button {
+    --c-cube-card-open-button-gradient: radial-gradient(
+      ellipse 80% 50%,
+      transparent 0%,
+      hsl(var(--c-clr-cubes-orange) / 0.2) 100%
+    );
+
+    position: static;
+    margin-left: auto;
+    padding: 0 8px;
+    color: hsl(var(--clr-blue-200));
+    background: var(--c-cube-card-open-button-gradient),
+      hsl(var(--clr-yellow-200) / 0.4);
+
+    box-shadow: 0 0 4px hsl(var(--clr-yellow-400) / 0.15),
+      0 0 4px hsl(var(--clr-yellow-300) / 0.18);
+    z-index: 2;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    will-change: background-color, box-shadow;
+
+    @media screen and (min-width: $bp-tablet) {
+      padding: 0.2ch;
+    }
+    &:hover {
+      background-color: hsl(var(--clr-orange-300) / 0.4);
+      box-shadow: 0 0 8px hsl(var(--clr-yellow-400) / 0.35),
+        0 0 8px hsl(var(--clr-yellow-300) / 0.38);
+    }
+    &:active {
+      background-color: hsl(var(--c-clr-cubes-orange-saturated) / 0.8);
+    }
+  }
+}

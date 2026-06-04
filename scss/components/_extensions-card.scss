@@ -1,0 +1,13 @@
+.extensions-card {
+  &__title {
+    padding-left: 20px;
+    font-size: var(--fs-md);
+    @media screen and (min-width: $bp-tablet) {
+      font-size: var(--fs-lg);
+    }
+  }
+  & img {
+    width: 100%;
+    border-radius: 18px;
+  }
+}

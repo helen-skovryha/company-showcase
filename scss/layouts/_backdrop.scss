@@ -1,0 +1,28 @@
+.backdrop {
+  padding: 30px;
+  @media screen and (min-width: $bp-tablet) {
+    padding: 80px 50px;
+  }
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+
+  background-color: hsl(var(--clr-darkening-gradient) / 0.4);
+  transition: opacity 0.3s;
+
+  opacity: 1;
+  display: block;
+  pointer-events: auto;
+
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &:has(.mobile-menu) {
+    padding: 16px;
+    @media screen and (min-width: $bp-tablet) {
+      padding: 50px;
+    }
+  }
+}

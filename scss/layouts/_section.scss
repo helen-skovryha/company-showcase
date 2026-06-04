@@ -1,0 +1,24 @@
+.section {
+  padding: 20px 0;
+  scroll-margin-top: 1.8lh;
+  @media screen and (min-width: $bp-laptop) {
+    padding: 36px 0;
+    scroll-margin-top: 100px;
+  }
+  @media screen and (min-width: $bp-desktop) {
+    scroll-margin-top: 127px;
+  }
+  &--flush-bottom {
+    padding-bottom: 0;
+  }
+  &__title {
+    margin-bottom: 1ch;
+    &--light {
+      color: hsl(var(--color-primary-white));
+      text-align: center;
+    }
+    &--centered {
+      text-align: center;
+    }
+  }
+}

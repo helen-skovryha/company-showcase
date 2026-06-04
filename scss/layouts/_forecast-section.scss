@@ -1,0 +1,145 @@
+.forecast-section {
+  background-image: url("/images/forecast-background.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url("/images/forecast-background@2x.jpeg");
+  }
+}
+
+.forecast-widget {
+  display: grid;
+  place-self: center;
+  gap: 24px;
+
+  max-width: 90%;
+  padding: 16px 8px;
+  margin: var(--m-auto);
+  border-radius: 32px;
+
+  font-size: 1.5rem;
+  font-weight: var(--fw-500);
+  color: hsl(var(--widget-text-color));
+
+  background: var(--widget-bgd);
+  backdrop-filter: blur(6px);
+  box-shadow: 5px 5px 20px hsl(var(--clr-yellow-100) / 0.5),
+    -5px -5px 20px hsl(var(--color-primary-white) / 0.2);
+  border-top: 1px solid hsl(var(--clr-yellow-100) / 0.01);
+  border-right: 1px solid hsl(var(--color-primary-darl) / 0.08);
+  &__sun-cloud {
+    display: grid;
+  }
+
+  &__sun {
+    width: 260px;
+    height: 220px;
+    object-position: center;
+
+    grid-column: 6 / span 6;
+    grid-row: 1;
+    opacity: 0.8;
+  }
+  &__clouds {
+    width: 260px;
+    height: 170px;
+    object-position: top;
+
+    grid-column: 8 / span 5;
+    grid-row: 1;
+    opacity: 0.5;
+  }
+  &__temperature {
+    font-size: 4.375rem;
+    font-weight: var(--fw-700);
+  }
+  &__value {
+    font-size: 1.875rem;
+  }
+}
+
+.forecast-dashboard {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  row-gap: 16px;
+
+  padding: 16px;
+  border-radius: 24px;
+  background-color: hsl(var(--dashboard-bgd) / 0.3);
+
+  @media screen and (min-width: $bp-tablet) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &__next-week {
+    grid-row: span 2;
+    align-self: center;
+  }
+  &__sunshine-hours-value {
+    align-self: center;
+    grid-column: 4 / span 3;
+
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    @media screen and (min-width: $bp-tablet) {
+      grid-column: 7 / span 6;
+    }
+  }
+  &__icon {
+    fill: hsl(var(--clr-yellow-200));
+  }
+  &__humidity {
+    justify-self: end;
+    @media screen and (min-width: $bp-tablet) {
+      justify-self: center;
+    }
+  }
+}
+
+.forecast-col-2 {
+  grid-column: span 3;
+  grid-row-start: 3;
+  @media screen and (min-width: $bp-desktop) {
+    grid-column: span 2;
+  }
+}
+.forecast-col-3 {
+  grid-column: span 3;
+  @media screen and (min-width: $bp-tablet) {
+    grid-column: span 4;
+  }
+  @media screen and (min-width: $bp-desktop) {
+    grid-column: span 3;
+  }
+}
+
+.forecast-col-4 {
+  grid-column: span 3;
+  @media screen and (min-width: $bp-tablet) {
+    grid-column: span 4;
+  }
+}
+
+.forecast-col-6 {
+  grid-column: span 3;
+  @media screen and (min-width: $bp-tablet) {
+    grid-column: span 6;
+  }
+}
+
+.forecast-col-12 {
+  grid-column: 1 / -1;
+}
+
+.self-center {
+  justify-self: center;
+  text-align: center;
+}
+.self-end {
+  justify-self: end;
+}

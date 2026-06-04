@@ -1,0 +1,100 @@
+.header {
+  position: fixed;
+  padding: 10px 0px;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  transform: translateY(20px);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out,
+    backdrop-filter 0.3s ease-in-out;
+
+  background-color: transparent;
+  backdrop-filter: blur(0);
+  --c-header-scrolled-clr: 0 37% 91%;
+
+  &.scrolled {
+    transform: translateY(0px);
+    background-color: hsl(var(--c-header-scrolled-clr) / 0.5);
+    backdrop-filter: blur(4px);
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    @media screen and (min-width: $bp-mobile) {
+      gap: 16px;
+    }
+    @media screen and (min-width: $bp-tablet) {
+      gap: 30px;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__contact {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    @media screen and (min-width: $bp-mobile) {
+      gap: 12px;
+    }
+  }
+  &__logo {
+    display: none;
+    padding: 0;
+    transition: none;
+    transform: translateX(0px) translateY(0px) scale(1);
+
+    &.logo-scrolled {
+      transform: translateX(0px) translateY(0px) scale(1);
+    }
+    @media screen and (min-width: $bp-mobile) {
+      display: block;
+    }
+    @media screen and (min-width: $bp-mobile-large) {
+      transition: transform 0.4s ease-in-out;
+      transform: translateX(60%) translateY(240px) scale(1.8);
+    }
+  }
+
+  & li {
+    display: block;
+  }
+  &__btn-bordered {
+    display: none;
+    @media screen and (min-width: $bp-tablet) {
+      display: block;
+    }
+  }
+
+  &__burgericon {
+    display: block;
+    @media screen and (min-width: $bp-tablet) {
+      width: 38px;
+      height: 38px;
+    }
+  }
+  &__burger {
+    display: block;
+    padding: 0;
+    border: none;
+
+    background-color: transparent;
+    fill: hsl(var(--color-primary-light));
+
+    &:hover,
+    &:focus-visible {
+      fill: hsl(var(--color-primary-light-hover));
+    }
+    @media screen and (min-width: $bp-laptop) {
+      display: none;
+    }
+  }
+}

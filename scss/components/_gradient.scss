@@ -1,0 +1,278 @@
+@property --c-mask-alpha {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+@property --c-mask-alpha-borderbox {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --c-border-width {
+  syntax: "<length>";
+  inherits: true; //from parent .gradient
+  initial-value: 3px;
+}
+
+@property --c-gradient-1-x {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 50%; // test 5000%
+}
+
+@property --c-gradient-1-y {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+
+@property --c-gradient-2-x {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 10%;
+}
+
+@property --c-gradient-2-y {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 10%;
+}
+
+@property --c-gradient-3-x {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 90%;
+}
+
+@property --c-gradient-3-y {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 20%;
+}
+
+@property --c-gradient-4-x {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 100%;
+}
+
+@property --c-gradient-4-y {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 60%;
+}
+
+@property --c-gradient-5-x {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: -10%;
+}
+
+@property --c-gradient-5-y {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 10%;
+}
+@property --c-yellow-circle-size {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 50px;
+}
+@property --c-blue-circle-size {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 50px; //test 5000px (definitely visible) or 1px(almost 50% of button height or background-size between blue and transparent , gradients interpolate smoothly between stops)
+}
+@property --c-orange-circle-size {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 80px;
+}
+@property --c-circle-size {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 80px;
+}
+@keyframes --c-gradient-movement {
+  25% {
+    --c-gradient-1-x: 50%;
+    --c-gradient-1-y: 80%;
+    --c-gradient-2-x: 70%;
+    --c-gradient-2-y: -30%;
+    --c-gradient-3-x: 30%;
+    --c-gradient-3-y: 80%;
+    --c-gradient-4-x: 50%;
+    --c-gradient-4-y: 20%;
+    --c-gradient-5-x: 30%;
+    --c-gradient-5-y: -40%;
+  }
+  75% {
+    --c-gradient-1-x: -10%;
+    --c-gradient-1-y: -10%;
+    --c-gradient-2-x: 100%;
+    --c-gradient-2-y: 100%;
+    --c-gradient-3-x: 0%;
+    --c-gradient-3-y: 110%;
+    --c-gradient-4-x: 10%;
+    --c-gradient-4-y: 30%;
+    --c-gradient-5-x: 30%;
+    --c-gradient-5-y: 10%;
+  }
+}
+//normal custom properties are not validated until they are used
+//registered typed values allow interpolation=smooth transition,  prevent the strange cascade overrides(if invalid → falls back )
+.gradient {
+  position: relative;
+  background: transparent;
+  isolation: isolate;
+  --c-border-width: 3px; //registering, explicit assignment if false or use a fallback, if delete - --c-border-width is shown as undefined but its initial value is used
+  border: var(--c-border-width) solid transparent;
+
+  @media screen and (min-width: $bp-tablet) {
+    --c-border-width: 6px;
+  }
+  &::before {
+    // --c-border-width: 3px;
+    // @media screen and (min-width: $bp-tablet) {
+    //   --c-border-width: 6px;
+    // } //is inherited from parent , although --c-border-width is shown as undefined
+    content: "";
+    display: block;
+    padding: 0.85lh 3ch;
+
+    position: absolute;
+    inset: calc(-1 * var(--c-border-width)); //-2 works when border is not set
+    z-index: -1;
+
+    border: var(--c-border-width) solid transparent;
+    // border-radius: 100vw; //removed and put on button cause it causes wierd corners on form if not overwritten on form and form before both
+
+    //If the property registration is ignored, var(--variable) behaves as an undefined custom property.
+    //
+    //  if not registered on element and no fallback - initial value is used,
+    //but in gradient is shown as undefined, so this --c-gradient-1-x: initial value 50% is used but shown as undefined
+    //because the initial-value from @property is not an actual CSS declaration on the element.
+    // It behaves more like an internal default value from the property registration system.
+    //
+    // these values could be changed for better visual appearance, defined on parent gradient, inherits: true
+    // --c-yellow-circle-size: 50px;
+    // --c-blue-circle-size: 50px;
+    // --c-orange-circle-size: 50px;
+    // --c-circle-size: 80px;
+    // --c-gradient-1-x: 50%;
+    // --c-gradient-1-y: 50%;
+    // --c-gradient-2-x: 10%;
+    // --c-gradient-2-y: 10%;
+    // --c-gradient-3-x: 90%;
+    // --c-gradient-3-y: 20%;
+    // --c-gradient-4-x: 100%;
+    // --c-gradient-4-y: 60%;
+    // --c-gradient-5-x: -10%;
+    // --c-gradient-5-y: 10%;
+
+    background: radial-gradient(
+          circle var(--c-orange-circle-size) at 50% 50%,
+          hsl(34, 100%, 50%),
+          transparent
+        )
+        border-box,
+      radial-gradient(
+          circle var(--c-yellow-circle-size) at 50% 50%,
+          hsl(59, 100%, 50%),
+          transparent
+        )
+        border-box,
+      radial-gradient(
+          circle var(--c-circle-size) at 50% 50%,
+          hsl(241, 100%, 50%),
+          transparent
+        )
+        border-box,
+      radial-gradient(
+          circle var(--c-circle-size) at 50% 50%,
+          hsl(350, 100%, 47%),
+          transparent
+        )
+        border-box,
+      radial-gradient(
+          circle var(--c-blue-circle-size) at 50% 50%,
+          hsl(258, 100%, 50%),
+          transparent
+        )
+        border-box;
+    background-position: var(--c-gradient-1-x) var(--c-gradient-1-y),
+      var(--c-gradient-2-x) var(--c-gradient-2-y),
+      var(--c-gradient-3-x) var(--c-gradient-3-y),
+      var(--c-gradient-4-x) var(--c-gradient-4-y),
+      var(--c-gradient-5-x) var(--c-gradient-5-y);
+    background-size: 245% 245%;
+    background-repeat: no-repeat;
+    @media screen and (min-width: $bp-desktop) {
+      background-size: 180% 180%;
+      --c-yellow-circle-size: 80px;
+    }
+
+    animation: --c-gradient-movement 16s alternate infinite ease-in-out;
+    mask: linear-gradient(rgba(0, 0, 0, var(--c-mask-alpha)) 0 0) padding-box,
+      linear-gradient(rgba(0, 0, 0, var(--c-mask-alpha-borderbox)) 0 0)
+        border-box;
+
+    transition: --c-mask-alpha 0.8s, --c-mask-alpha-borderbox 0.8s;
+  }
+
+  &--filled::before {
+    mask-composite: exclude;
+    --c-mask-alpha: 0;
+    --c-mask-alpha-borderbox: 1;
+  }
+  &--filled:hover::before {
+    --c-mask-alpha: 1;
+    --c-mask-alpha-borderbox: 1;
+  }
+  &--bordered::before {
+    mask-composite: subtract;
+    -webkit-mask-composite: destination-out;
+    --c-mask-alpha: 1;
+    --c-mask-alpha-borderbox: 1;
+  }
+  &--bordered:hover::before {
+    --c-mask-alpha: 0;
+    --c-mask-alpha-borderbox: 1;
+  }
+
+  &__form::before {
+    --c-yellow-circle-size: 380px;
+    --c-orange-circle-size: 180px;
+    --c-circle-size: 380px;
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+    --c-mask-alpha: 1;
+    --c-mask-alpha-borderbox: 1;
+
+    border-radius: 16px;
+    @media screen and (min-width: $bp-mobile) {
+      border-radius: 32px;
+    }
+  }
+  &__button::before {
+    border-radius: 100vw;
+    padding: 0.35lh 1ch;
+  }
+  &__button {
+    border-radius: 100vw;
+    padding: 0.35lh 1ch;
+    color: hsl(var(--color-primary-white));
+    font-size: var(--fs-xs);
+    @media screen and (min-width: $bp-mobile) {
+      font-size: var(--fs-sm);
+    }
+    @media screen and (min-width: $bp-laptop) {
+      font-size: var(--fs-md);
+      padding: 0.85lh 3ch;
+    }
+    @media screen and (min-width: $bp-desktop) {
+      font-size: var(--fs-2xl);
+    }
+  }
+}

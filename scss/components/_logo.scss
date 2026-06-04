@@ -1,0 +1,11 @@
+.logo {
+  width: 100%;
+  max-width: 200px;
+  fill: var(--color-primary-light);
+  @media screen and (min-width: $bp-laptop) {
+    max-width: 240px;
+  }
+  &__image {
+    width: 100%;
+  }
+}
