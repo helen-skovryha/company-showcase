@@ -15,16 +15,27 @@ const unlockScrollForm = () => {
   );
 };
 
+function modalFormTrapHandler(e) {
+  trapFocus(e, modalFormWindow);
+};
+
 function openModalForm() {
   modalForm.classList.remove('is-hidden');
   modalForm.setAttribute('aria-hidden', 'false');
-    lockScroll();
+  lockScroll();
+  
+  modalFormBtnClose.focus();
+  document.addEventListener('keydown', modalFormTrapHandler);//tab is pressed
+
 
 }
 function closeModalForm() {
   modalForm.classList.add('is-hidden');
   modalForm.setAttribute('aria-hidden', 'true');
-    unlockScrollForm();
+  unlockScrollForm();
+  
+  document.removeEventListener('keydown', modalFormTrapHandler);//tab is pressed
+
   
 }
 function setModalFormMode(mode) {
@@ -42,12 +53,12 @@ function setModalFormMode(mode) {
 
     if (mode === 'sign-up') {
     fieldSignUp.forEach(input => input.disabled = false);  
-  } else if (mode === 'sign-in') {
+    } else if (mode === 'sign-in') {
     fieldSignIn.forEach(input => input.disabled = false);  
-  } else if (mode === 'book') {
+    } else if (mode === 'book') {
      fieldBook.forEach(input => input.disabled = false);  
      fieldSignUp.forEach(input => input.disabled = false);  
-  }
+    }
 }
 
 const fieldSignIn = document.querySelectorAll('.form-field__sign-in input');
@@ -58,6 +69,7 @@ const fieldBook = document.querySelectorAll('.form-field__book input, .form-fiel
 modalFormSignUpBtnOpen.forEach(btn => {
   btn.addEventListener('click', e => {
     
+     lastFocusedElement = e.currentTarget;
     setModalFormMode('sign-up');
     openModalForm();
 
@@ -67,6 +79,7 @@ modalFormSignUpBtnOpen.forEach(btn => {
 modalFormSignInBtnOpen.forEach(btn => {
   btn.addEventListener('click', e => {
  
+   lastFocusedElement = e.currentTarget;
   setModalFormMode('sign-in');
   openModalForm();
     
@@ -76,6 +89,7 @@ modalFormSignInBtnOpen.forEach(btn => {
 modalFormBookBtnOpen.forEach(btn => {
   btn.addEventListener('click', e => {
     
+   lastFocusedElement = e.currentTarget;  
   setModalFormMode('book');
   openModalForm();
     
@@ -96,11 +110,15 @@ modalFormBookInsideModal.forEach(btn => {
   });
 });
 
-modalFormBtnClose.addEventListener('click', closeModalForm);
+modalFormBtnClose.addEventListener('click', () => {
+  closeModalForm();
+  lastFocusedElement?.focus();
+})
 
 
 modalForm.addEventListener('click', (e) => {
   if (e.target === modalForm) {
     closeModalForm();
+     lastFocusedElement?.focus();//return tab focus on opening btn
   }
 });

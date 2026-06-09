@@ -26,22 +26,56 @@ function createFrozenClone(cube) {
 
 
 let activeHover = null;
+
+let currentSide;//  for making side visible globally
+let frozenSideForGlobalScope;
+
 function mouseEnterForSides({ cube, sideIndex }) {
   const side = cube.querySelector(`.cube__side:nth-child(${sideIndex})`);
 
-  side.addEventListener('mouseenter', () => {
-    if (activeHover) return;
+  function handlerForSidesOnEvent(e) {
+       if (activeHover) return;
 
     const frozenClone = createFrozenClone(cube);
     const frozenSide = frozenClone.querySelector(
       `.cube__side:nth-child(${sideIndex})`
     );
+    frozenSideForGlobalScope = frozenSide;
+    
+    frozenSide.addEventListener('focusout', e => {
+      if (!frozenSide.contains(e.relatedTarget)) {
+    
+      requestAnimationFrame(() => {
 
-    document.dispatchEvent(
-    new CustomEvent('frozen-side-created', {
-    detail: { frozenSide }
-    })
+       const allSides = [
+         ...document.querySelectorAll('.cube__side')
+         ];
+       const currentIndex = allSides.indexOf(currentSide);
+       const nextSide = allSides[currentIndex + 1];
+   
+       setTimeout(() => {
+          handlerForSidesWhenLeave();
+          setTimeout(() => {
+            if (openingModal) {
+              openingModal = false;
+              return;
+            }   
+            nextSide?.focus();
+           
+          }, 550);//sets focus after transition is finished and clone deleted (original cube is hidden, so its sides are hidden, nextside is null, focus falls to body)
+       }, 0);
+      });
+        
+      }
+    });
+
+    document.dispatchEvent(//for modal
+       new CustomEvent('frozen-side-created', {
+         detail: { frozenSide }
+       })
     );
+
+    currentSide = cube.querySelector(`.cube__side:nth-child(${sideIndex})`);//  for making side visible globally, to target not cloned cube-side-btn-open
 
     const baseTransform = getComputedStyle(side).transform;
     const baseColor = getComputedStyle(side).backgroundColor;
@@ -52,19 +86,20 @@ function mouseEnterForSides({ cube, sideIndex }) {
     frozenSide.style.transition = 'transform 1s ease, background-color 1s ease, filter 1s ease';
     frozenSide.style.willChange = 'transform';
 
+
     cube.style.visibility = 'hidden';
     cube.parentNode.appendChild(frozenClone);
     void frozenClone.offsetWidth;
 
-    frozenSide.style.backgroundColor = 'hsl(var(--c-clr-surface-elevated) / 0.8)';//'hsl(225 70% 40% / 0.8)';
+    frozenSide.style.backgroundColor = 'hsl(var(--c-clr-surface-elevated) / 0.8)';
     frozenSide.style.filter =
-      'drop-shadow(0px 0px 8px hsl(var(--clr-yellow-300)))';
+     'drop-shadow(0px 0px 8px hsl(var(--clr-yellow-300)))';
 
     const isFrontSide = sideIndex === 1;
 
-    frozenSide.style.transform = isFrontSide
-    ? `translateZ(100px) scale(2.07)`
-    : `${baseTransform} translateX(50%) translateY(50%) translateZ(100px) scale(2.07)`;
+     frozenSide.style.transform = isFrontSide
+      ? `translateZ(100px) scale(2.07)`
+      : `${baseTransform} translateX(50%) translateY(50%) translateZ(100px) scale(2.07)`;
     
     activeHover = {
       cube,
@@ -74,11 +109,18 @@ function mouseEnterForSides({ cube, sideIndex }) {
       baseTransform,
       baseColor,baseFilter
     };
+  };
+  
+  side.addEventListener('mouseenter', handlerForSidesOnEvent);
+  side.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.keyCode === 32) {
+      handlerForSidesOnEvent();
+      frozenSideForGlobalScope.querySelector('.modal-cube-side-btn-open').focus();
+    };
   });
 };
 
-
-scene.addEventListener('mouseleave', () => {
+function handlerForSidesWhenLeave(e) {
   if (!activeHover) return;
 
   const {
@@ -100,7 +142,10 @@ scene.addEventListener('mouseleave', () => {
     cube.style.visibility = 'visible';
     activeHover = null;
   }, 500);
-});
+}
+
+scene.addEventListener('mouseleave', handlerForSidesWhenLeave);
+
 
 const cubes = [cube1, cube2, cube3, cube4, cube5, cube6, cube7, cube8];
 const sides = [1, 3, 4];
@@ -111,3 +156,4 @@ cubes.forEach(cube => {
   });
 });
 
+    

@@ -14,23 +14,33 @@ const unlockScrollMobileMenu = () => {
   );
 };
 
+function mobileMenuTrapHandler(e) {
+  trapFocus(e, mobileMenuWindow);
+};
 
 const openMobileMenu = () => {
   mobileMenuBackdrop.classList.remove('is-hidden');
-    mobileMenuWindow.classList.add('is-mobile-menu-open');
+  mobileMenuWindow.classList.add('is-mobile-menu-open');
   mobileMenuBackdrop.setAttribute('aria-hidden', 'false');
   lockScroll();
+
+  mobileMenuBtnClose[0].focus();
+  document.addEventListener('keydown', mobileMenuTrapHandler);
 };
+
 const closeMobileMenu = () => {
   mobileMenuBackdrop.classList.add('is-hidden');
-    mobileMenuWindow.classList.remove('is-mobile-menu-open');
+  mobileMenuWindow.classList.remove('is-mobile-menu-open');
   mobileMenuBackdrop.setAttribute('aria-hidden', 'true');
   unlockScrollMobileMenu();
+
+  document.removeEventListener('keydown', mobileMenuTrapHandler);
 };
 
 mobileMenuBtnOpen.forEach(button => {
-  button.addEventListener('click', () => {
+  button.addEventListener('click', (e) => {
    
+    lastFocusedElement = e.currentTarget;
     openMobileMenu();
     
   })
@@ -39,13 +49,15 @@ mobileMenuBtnOpen.forEach(button => {
 
 mobileMenuBtnClose.forEach(button => {
   button.addEventListener('click', () => {
-       closeMobileMenu();
+    closeMobileMenu();
+    lastFocusedElement?.focus();
   })
 })
 
 mobileMenuBackdrop.addEventListener('click', (e) => {
   if (e.target === mobileMenuBackdrop) {
     closeMobileMenu();
+    lastFocusedElement?.focus();
   }
 });
 
