@@ -59,7 +59,8 @@
     padding: 0;
     --c-clr-link: var(--clr-yellow-400);
     transition: filter 0.2s ease-in-out;
-    &:hover {
+    &:hover,
+    &:focus-visible {
       filter: var(--glow-drop-shadow);
     }
   }

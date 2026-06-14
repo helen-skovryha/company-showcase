@@ -29,6 +29,7 @@
       border: 1px solid hsl(var(--color-primary-light));
       border-radius: 5px;
       box-shadow: 1px 1px 4px hsl(var(--color-primary-light));
+      transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     }
   }
 
@@ -45,6 +46,11 @@
     box-shadow: 0 2px 20px hsl(var(--color-primary-light) / 0.18),
       0 8px 24px hsl(var(--clr-orange-300) / 0.18);
     filter: var(--glow-drop-shadow);
+  }
+  &__input:hover + &__label::before,
+  &__input:focus-visible + &__label::before {
+    background-color: hsl(var(--color-primary-light) / 0.16);
+    box-shadow: 0 8px 24px hsl(var(--clr-orange-300) / 0.4);
   }
 
   &__label:active::before {

@@ -96,10 +96,28 @@ modalFormBookBtnOpen.forEach(btn => {
   });
 });
 
+
+function getFocusableElements(formWindow) {
+  const allElements = [
+    ...formWindow.querySelectorAll(
+    'button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    )
+  ];
+
+  const visibleElements = allElements.filter(
+    el => el.offsetParent !== null
+  );
+
+  return visibleElements;
+}
+
 const modalFormSignInInsideModal = document.querySelectorAll('.modal-form__sign-in-button');
 modalFormSignInInsideModal.forEach(btn => {
   btn.addEventListener('click', e => {
     setModalFormMode('sign-in');
+
+    const focusableEls = getFocusableElements(modalFormWindow);
+    focusableEls[0]?.focus();
   });
 });
 
@@ -107,6 +125,9 @@ const modalFormBookInsideModal = document.querySelectorAll('.modal-form__book-bu
 modalFormBookInsideModal.forEach(btn => {
   btn.addEventListener('click', e => {
     setModalFormMode('book');
+    
+    const focusableEls = getFocusableElements(modalFormWindow);
+    focusableEls[0]?.focus();
   });
 });
 

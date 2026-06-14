@@ -57,7 +57,8 @@
     @media screen and (min-width: $bp-desktop) {
       font-size: 0.625rem;
     }
-    &:hover {
+    &:hover,
+    &:focus-visible {
       box-shadow: 0 2px 6px hsl(var(--clr-violet-200) / 0.35),
         0 8px 24px hsl(var(--clr-blue-300) / 0.38);
     }
