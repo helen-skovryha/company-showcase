@@ -38,11 +38,11 @@ Responsive landing page built as a UI/CSS practice project, featuring SCSS styli
 
 ### Desktop
 
-![Desktop Preview](./screenshots/desktop-home.png)
+![Desktop Home Page](./screenshots/desktop-home.png)
 
 ### Mobile
 
-![Mobile Preview](./screenshots/mobile-home.png)
+![Mobile Home Page](./screenshots/mobile-home.png)
 
 ### 3D Cube Interaction
 
@@ -60,7 +60,7 @@ Responsive landing page built as a UI/CSS practice project, featuring SCSS styli
 git clone git@github.com:helen-skovryha/company-showcase.git
 ```
 
-Open `index.html` using Live Server in VS Code or directly in a browser.
+Open `index.html` in a browser or run the project with Live Server in VS Code
 
 ## Project Structure
 
@@ -87,12 +87,12 @@ company-showcase/
 
 - Semantic HTML structure
 - Alt text for images
-- Support for Tab and Shift+Tab keyboard navigation
+- Support for Tab keyboard navigation
 - Focus management for modal windows
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License
 
 ## Author
 

@@ -34,24 +34,29 @@
     transform: translate(20px, 10px) scale(1.2);
     transition: opacity 0.3s, transform 0.3s, background-color 0.3s;
   }
-  &:hover::before {
+  &:hover::before,
+  &:has(.link:focus-visible)::before {
     opacity: 0.8;
     background-color: hsl(var(--clr-blue-100) / 0.6);
     transform: scale(1);
   }
-  &:hover::after {
+  &:hover::after,
+  &:has(.link:focus-visible)::after {
     opacity: 0.8;
     background-color: hsl(var(--clr-orange-100) / 0.2);
     transform: translate(0px, 10px) scale(1);
   }
 
-  &:hover .dropdown-menu__item {
+  &:hover .dropdown-menu__item,
+  &:focus-visible .dropdown-menu__item {
     background-color: hsl(var(--clr-blue-100) / 0.4);
   }
-  &:hover .dropdown-menu__item:hover {
+  &:hover .dropdown-menu__item:hover,
+  & .dropdown-menu__item:has(.link:focus-visible) {
     background-color: hsl(var(--clr-orange-100) / 0.3);
   }
-  &:hover .dropdown-menu__item:hover::after {
+  &:hover .dropdown-menu__item:hover::after,
+  & .dropdown-menu__item:has(.link:focus-visible)::after {
     opacity: 0.8;
     background-color: hsl(var(--clr-orange-400) / 0.5);
     transform: translate(10px, 0px) scale(1);
