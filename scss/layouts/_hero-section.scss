@@ -34,13 +34,10 @@
 }
 
 .hero-section__title {
-  // @media (min-width: $bp-mobile) {
-  //   @extend .visually-hidden;
-  // }
   margin-bottom: 48px;
   font-size: 1.75rem;
   font-weight: 900;
   line-height: var(--lh-main);
-  color: hsl(var(--clr-orange-400) / 0.4);
   text-align: center;
+  color: hsl(var(--clr-orange-400) / 0.7);
 }

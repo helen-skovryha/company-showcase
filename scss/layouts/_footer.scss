@@ -1,32 +1,31 @@
 .footer {
   position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background-image: linear-gradient(to top, black 30%, transparent 100%),
+      url("/images/main-background.jpg");
+    // mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    transform: rotate(180deg);
+
+    @media screen and (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(to top, black 30%, transparent 100%),
+        url("/images/main-background@2x.jpg");
+    }
+  }
 
   &__content {
     position: relative;
     padding: 64px 0;
     font-family: "Libre Franklin", sans-serif;
-
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-
-      background-image: linear-gradient(to top, black 30%, transparent 100%),
-        url("/images/main-background.jpg");
-      // mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: top;
-      transform: rotate(180deg);
-
-      @media screen and (min-device-pixel-ratio: 2),
-        (min-resolution: 192dpi),
-        (min-resolution: 2dppx) {
-        background-image: linear-gradient(to top, black 30%, transparent 100%),
-          url("/images/main-background@2x.jpg");
-      }
-    }
   }
   &__container {
     display: flex;

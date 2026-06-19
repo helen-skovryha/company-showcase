@@ -26,8 +26,7 @@ Responsive landing page built as a UI/CSS practice project, featuring SCSS styli
   - Multiple sliders on a single page
   - Creative Effect with customized transitions
   - Responsive multi-row grid layout
-- Modal windows and dynamic forms
-- Dynamic form mode switching (Sign In / Sign Up / Booking)
+- Modal windows and dynamic form mode switching (Sign In / Sign Up / Booking)
 - Modal scroll-lock with scrollbar compensation
 - Reusable animated gradient system with CSS masking and hover effects
 - Reusable animated conic-gradient borders powered by CSS custom properties

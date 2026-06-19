@@ -71,12 +71,19 @@
     }
   }
   &__description {
-    padding-bottom: 12px;
     text-align: center;
     grid-column: 2;
 
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    align-self: center;
+
     @media screen and (min-width: $bp-tablet) {
       grid-column: span 2;
+      padding-bottom: 12px;
     }
   }
 }
