@@ -24,7 +24,7 @@
       hsl(var(--clr-darkening-gradient) / 0.12) 58.46%,
       hsl(var(--clr-darkening-gradient) / 0) 90.36%
     ),
-    url("/images/main-background.jpg");
+    url("../images/main-background.jpg");
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -32,14 +32,14 @@
   @media screen and (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url("/images/main-background@2x.jpg");
+    background-image: url("../images/main-background@2x.jpg");
   }
 
   &::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("/images/cubes-background.jpeg");
+    background-image: url("../images/cubes-background.jpeg");
     background-size: cover;
 
     opacity: 0.3;
@@ -49,7 +49,7 @@
     @media screen and (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url("/images/cubes-background@2x.jpeg");
+      background-image: url("../images/cubes-background@2x.jpeg");
     }
   }
 

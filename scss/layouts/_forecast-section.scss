@@ -1,12 +1,12 @@
 .forecast-section {
-  background-image: url("/images/forecast-background.jpeg");
+  background-image: url("../images/forecast-background.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
 
   @media screen and (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url("/images/forecast-background@2x.jpeg");
+    background-image: url("../images/forecast-background@2x.jpeg");
   }
 }
 

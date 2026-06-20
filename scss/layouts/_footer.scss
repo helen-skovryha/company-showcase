@@ -7,7 +7,7 @@
     z-index: -1;
 
     background-image: linear-gradient(to top, black 30%, transparent 100%),
-      url("/images/main-background.jpg");
+      url("../images/main-background.jpg");
     // mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
     background-repeat: no-repeat;
     background-size: cover;
@@ -18,7 +18,7 @@
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       background-image: linear-gradient(to top, black 30%, transparent 100%),
-        url("/images/main-background@2x.jpg");
+        url("../images/main-background@2x.jpg");
     }
   }
 
